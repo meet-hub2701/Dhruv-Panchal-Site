@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Dribbble } from 'lucide-react';
+import { Instagram, Dribbble, Figma } from 'lucide-react';
 
 interface ContactProps {
   isDarkMode: boolean;
@@ -34,7 +34,7 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             
             <div className="flex gap-6 mt-8">
                 <a href="#" className="text-primary hover:text-yellow-500 transition-colors">
-                    <Dribbble size={24} />
+                    <Figma size={24} />
                 </a>
                 <a href="#" className="text-primary hover:text-yellow-500 transition-colors">
                     <Instagram size={24} />
