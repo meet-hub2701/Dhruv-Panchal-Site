@@ -35,7 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
       <div className="flex flex-col items-center z-10 animate-fade-in-up">
         <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden mb-8 border-4 border-transparent shadow-2xl">
           <img 
-            src="/images/Home/Dhruv-image.png" 
+            src="/images/home/Dhruv-image.png" 
             alt="Dhruv Panchal" 
             className="w-full h-full object-cover"
           />

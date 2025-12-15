@@ -48,7 +48,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ isDarkMode }) => {
         {projects.map((item) => (
           <div key={item} className="group relative w-full aspect-[4/3] bg-gray-200 overflow-hidden cursor-pointer">
             <img 
-              src={`/images/Portfolio/P-${item}.jpg`} 
+              src={`/images/portfolio/P-${item}.jpg`} 
               alt={`Project ${item}`}
               className="w-full h-full object-cover"
             />

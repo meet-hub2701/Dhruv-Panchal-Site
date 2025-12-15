@@ -16,7 +16,7 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
       <div className="w-full md:w-1/3 flex justify-center">
         <div className="relative w-full max-w-md aspect-[3/4] overflow-hidden shadow-xl">
            <img 
-            src="/images/About/About-image.jpg" 
+            src="/images/about/About-image.jpg" 
             alt="About Me" 
             className="w-full h-full object-cover"
           />
