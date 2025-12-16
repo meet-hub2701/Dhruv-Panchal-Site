@@ -8,10 +8,10 @@ interface NavbarProps {
 }
 
 const navItems: NavItem[] = [
-  { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'PORTFOLIO', href: '#portfolio' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
@@ -113,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
             className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-200
               ${activeSelect === item.label 
                 ? (isDarkMode ? 'text-black' : 'text-white') 
-                : (isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-black')
+                : (isDarkMode ? 'text-white hover:text-gray-200' : 'text-black hover:text-gray-800')
               }
             `}
           >

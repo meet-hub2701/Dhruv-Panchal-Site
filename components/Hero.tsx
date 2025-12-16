@@ -64,7 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
       <div 
         className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 hidden md:block"
       >
-        <div className={`rotate-90 origin-center whitespace-nowrap tracking-[0.3em] text-xs font-semibold ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <div className={`rotate-90 origin-center whitespace-nowrap tracking-widest text-sm font-semibold ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
           Fullstack Developer
         </div>
       </div>
