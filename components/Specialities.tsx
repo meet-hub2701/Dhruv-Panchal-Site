@@ -1,70 +1,96 @@
-import React from 'react';
-import { Palette, Code, Layers } from 'lucide-react';
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Info, { InfoType } from "./Info";
+
+const sliderImages = [
+  "/images/logo/logo1.png",
+  "/images/logo/logo2.png",
+  "/images/logo/logo3.png",
+  "/images/logo/logo4.png",
+  "/images/logo/logo5.png",
+  "/images/logo/logo6.png",
+  "/images/logo/logo7.png",
+  "/images/logo/logo8.png",
+  "/images/logo/logo9.png",
+  "/images/logo/logo10.png",
+  "/images/logo/logo11.png",
+  "/images/logo/logo12.png",
+  "/images/logo/logo13.png",
+  "/images/logo/logo14.png",
+  "/images/logo/logo15.png",
+  "/images/logo/logo16.png",
+  "/images/logo/logo17.png",
+  "/images/logo/logo18.png",
+  "/images/logo/logo19.png",
+];
+
+const infoData: InfoType = {
+  INFO_TITLE: "Specialities",
+  INFO_DESC: "I love building websites that are fast, intuitive, and visually stunning. My expertise spans the entire stack—from crafting pixel-perfect interfaces with React and Next.js to architecting robust backends using Node.js and scalable databases. I focus on cleaner code, optimize performance, and reliable digital experiences.",
+  INFO_NUMBER: "(02)",
+};
 
 interface SpecialitiesProps {
   isDarkMode: boolean;
 }
 
 export const Specialities: React.FC<SpecialitiesProps> = ({ isDarkMode }) => {
-  const specialities = [
-    {
-      title: "UI/UX Design",
-      description: "I design interfaces that feel right. It's not just about looking good; it's about creating a smooth, logical flow that users actually enjoy navigating.",
-      icon: <Palette size={40} className="mb-4 text-primary" />,
-    },
-    {
-      title: "Frontend Dev",
-      description: "I bring designs to life with clean, efficient code. Fast loading, responsive on any screen, and buttery smooth animations are my standard.",
-      icon: <Code size={40} className="mb-4 text-primary" />,
-    },
-    {
-      title: "Fullstack Solutions",
-      description: "Need more than just a pretty face? I build the heavy-lifting logic behind the scenes, ensuring your app works as seamlessly as it looks.",
-      icon: <Layers size={40} className="mb-4 text-primary" />,
-    }
-  ];
+  // Duplicate images for seamless loop
+  const seamlessImages = [...sliderImages, ...sliderImages];
 
   return (
-    <section 
-      id="specialities" 
-      className={`relative w-full py-20 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+    <section
+      id="specialities"
+      className={`relative py-12 md:py-24 overflow-hidden ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
     >
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-16">
-          <div className={`h-[2px] w-[50px] md:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
-          <h2 className={`font-sans text-3xl md:text-4xl font-bold tracking-widest uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>
-            Specialities
-          </h2>
-          <div className={`h-[2px] w-[50px] md:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
-        </div>
+      <div className="w-full container mx-auto mb-16">
+        <Info infoData={infoData} isDarkMode={isDarkMode} />
+      </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          {specialities.map((item, index) => (
-            <div 
-              key={index}
-              className={`p-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center text-center
+      <div className="flex overflow-hidden">
+        <motion.div
+          className="flex gap-4 md:gap-7 will-change-transform"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 40,
+              ease: "linear",
+            },
+          }}
+          style={{ width: "fit-content" }}
+        >
+          {seamlessImages.map((imgPath, index) => (
+            <div
+              key={`${imgPath}-${index}`}
+              className={`
+                group relative
+                w-[200px] sm:w-[250px] md:w-[353px] 
+                p-10 md:p-14
+                border rounded-[40px] flex-shrink-0 flex items-center justify-center aspect-square
+                transition-all duration-500 ease-out
                 ${isDarkMode 
-                  ? 'bg-[#1a1a1a] hover:bg-[#252525] border border-white/5' 
-                  : 'bg-gray-50 hover:bg-white border border-gray-100 hover:shadow-xl'
-                }`}
+                  ? 'border-white/5 bg-[#1a1a1a]/40 backdrop-blur-sm hover:bg-[#1a1a1a]/80 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.1)]' 
+                  : 'border-black/5 bg-gray-50/50 backdrop-blur-sm hover:bg-white hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.15)]'}
+              `}
             >
-              <div className={`p-4 rounded-full mb-6 ${isDarkMode ? 'bg-white/5' : 'bg-primary/10'}`}>
-                {item.icon}
-              </div>
-              <h3 className={`text-xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                {item.title}
-              </h3>
-              <p className={`text-sm leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                {item.description}
-              </p>
+              <img
+                src={imgPath}
+                alt={`Technology ${index + 1}`}
+                className={`
+                  w-full h-full object-contain transition-all duration-500 
+                  ${isDarkMode 
+                    ? 'brightness-0 invert opacity-60 group-hover:filter-none group-hover:opacity-100' 
+                    : 'brightness-0 opacity-60 group-hover:opacity-100'}
+                `}
+                loading="lazy"
+              />
             </div>
           ))}
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );
 };
+
