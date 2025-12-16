@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Instagram, Dribbble, Figma, CheckCircle } from 'lucide-react';
+import { Instagram, Dribbble, Figma, CheckCircle, Twitter } from 'lucide-react';
 
 interface ContactProps {
   isDarkMode: boolean;
@@ -70,7 +70,7 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     <>
       <section 
         id="contact" 
-        className={`relative w-full pt-20 pb-40 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+        className={`relative w-full pt-12 pb-20 md:pt-20 md:pb-40 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
       >
         <div className="flex items-center justify-center mb-16">
           <h2 className={`text-3xl font-medium tracking-wide ${isDarkMode ? 'text-white' : 'text-black'}`}>
@@ -93,6 +93,9 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             </p>
             
             <div className="flex gap-6 mt-8">
+                <a href="https://x.com" className="text-primary hover:text-yellow-500 transition-colors">
+                    <Twitter size={24} />
+                </a>
                 <a href="https://www.figma.com" className="text-primary hover:text-yellow-500 transition-colors">
                     <Figma size={24} />
                 </a>
@@ -202,7 +205,7 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
         </h2>
         
         <p className="text-black/60 text-xs mt-4">
-            Copyright by Nikita Bielavin 2023
+            Copyright by Dhruv Panchal 2023
         </p>
       </footer>
     </>

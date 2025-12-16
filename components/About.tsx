@@ -22,9 +22,9 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
   return (
     <section 
       id="about" 
-      className={`relative w-full py-24 px-6 md:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+      className={`relative w-full py-12 md:py-24 px-6 md:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
     >
-      <div className={`relative w-full max-w-[1000px] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
+      <div className={`relative w-full max-w-[1000px] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 p-4 md:p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
         
         {/* Left Image */}
         <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex-shrink-0">
@@ -36,28 +36,79 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
         </div>
 
         {/* Right Content */}
-        <div className="flex flex-col items-start z-10">
-          <h3 className="text-[#8262FF] text-xl font-normal tracking-wide mb-2 uppercase">
-            The Author
-          </h3>
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <div className="flex flex-col items-start z-10 w-full md:w-auto">
+          {/* ABOUT Header */}
+          <div className="flex items-center gap-4 mb-2">
+            <h3 className={`text-2xl font-normal tracking-wide ${isDarkMode ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
+              ABOUT
+            </h3>
+            <div className={`h-[2px] w-[70px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+          </div>
+
+          {/* Name */}
+          <h2 className={`font-bold text-[40px] leading-tight mb-6 ${isDarkMode ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'Roboto' }}>
             Dhruv Panchal
           </h2>
-          <p className={`text-base font-light leading-relaxed max-w-sm mb-8 ${isDarkMode ? 'text-gray-300' : 'text-black'}`}>
+
+          {/* Description */}
+          <p className={`text-base font-normal leading-relaxed max-w-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
             Detail-oriented team player with strong organizational skills. 
             Ability to handle multiple projects simultaneously with a high 
             degree of accuracy.
           </p>
           
-          {/* Signature Placeholder - Since no image was provided, using a script font or simple text for now */}
-          {/* <img src="/path/to/signature.png" alt="Signature" className="h-16" /> */}
+          {/* SKILLS Header */}
+          <div className="flex items-center gap-4 mb-6">
+            <h3 className={`text-2xl font-normal tracking-wide ${isDarkMode ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
+              SKILLS
+            </h3>
+            <div className={`h-[2px] w-[70px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+          </div>
+
+          {/* Skills List */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3 relative">
+             {/* Column 1 */}
+             <div className="flex items-center gap-3">
+                <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
+                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Figma</span>
+             </div>
+             <div className="flex items-center gap-3">
+                <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
+                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Adobe XD</span>
+             </div>
+
+             {/* Column 2 */}
+             <div className="flex items-center gap-3">
+                <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
+                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Illustrator</span>
+             </div>
+             <div className="flex items-center gap-3">
+                <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
+                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Sketch</span>
+             </div>
+
+             {/* Column 3 (Wrapping) */}
+             <div className="flex items-center gap-3">
+                <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
+                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Photoshop</span>
+             </div>
+          </div>
+        </div>
+
+        {/* Signature - Adjusted Position */}
+        <div className="absolute right-6 bottom-16 md:right-16 md:bottom-20 z-20 hidden md:block">
+           <img 
+             src="/images/about/signature.png" 
+             alt="Signature" 
+             className={`w-[60px] h-auto object-contain opacity-90 ${isDarkMode ? 'invert' : ''}`}
+           />
         </div>
 
         {/* Vertical Text - Absolute Positioned */}
-        <div className="absolute -right-20 top-1/2 -translate-y-1/2 hidden lg:block select-none pointer-events-none">
+        <div className="absolute -right-24 top-1/2 -translate-y-1/2 hidden lg:block select-none pointer-events-none">
           <span 
-            className="block text-[120px] font-bold text-[#DBDBDB]/30 whitespace-nowrap"
-            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+            className="block text-[120px] font-bold text-[#DBDBDB80] whitespace-nowrap"
+            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(360deg)' }}
           >
             AUTHOR
           </span>

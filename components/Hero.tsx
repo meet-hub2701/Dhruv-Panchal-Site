@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Figma } from 'lucide-react';
+import { Instagram, Figma, Twitter } from 'lucide-react';
 
 interface HeroProps {
   isDarkMode: boolean;
@@ -9,10 +9,13 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   return (
     <section 
       id="home" 
-      className={`relative w-full min-h-[815px] flex flex-col justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+      className={`relative w-full min-h-[100dvh] md:min-h-[815px] flex flex-col justify-center items-center overflow-hidden transition-colors duration-500 pt-20 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
     >
-      {/* Left Social Icons */}
-      <div className="absolute left-8 md:left-16 top-1/2 -translate-y-1/2 flex flex-col gap-8">
+      {/* Social Icons - Mobile: Bottom Row, Desktop: Left Column */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:bottom-auto md:left-16 md:top-1/2 md:-translate-y-1/2 flex flex-row md:flex-col gap-8 z-20">
+        <a href="https://x.com" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
+          <Twitter size={24} />
+        </a>
         <a href="https://www.figma.com" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
           <Figma size={24} />
         </a>

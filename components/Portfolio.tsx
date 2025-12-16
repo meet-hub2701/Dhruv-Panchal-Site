@@ -28,7 +28,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ isDarkMode }) => {
   return (
     <section 
       id="portfolio" 
-      className={`relative w-full py-24 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+      className={`relative w-full py-12 md:py-24 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
     >
       {/* Header */}
       <div className="flex items-center justify-center gap-4 mb-8">
