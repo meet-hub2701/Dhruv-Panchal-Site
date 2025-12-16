@@ -29,7 +29,7 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
         {/* Left Image */}
         <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex-shrink-0">
           <img 
-            src="/images/about/Dhruv-image.png" 
+            src="/images/about/Dhruv-Image.png" 
             alt="Dhruv Panchal" 
             className="w-full h-full object-cover grayscale" 
           />
