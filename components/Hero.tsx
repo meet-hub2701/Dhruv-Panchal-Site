@@ -13,13 +13,13 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
     >
       {/* Left Social Icons */}
       <div className="absolute left-8 md:left-16 top-1/2 -translate-y-1/2 flex flex-col gap-8">
-        <a href="#" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <a href="https://www.figma.com" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
           <Figma size={24} />
         </a>
-        <a href="#" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <a href="https://www.instagram.com" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
           <Instagram size={24} />
         </a>
-        <a href="#" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <a href="https://www.behance.net" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
            <span className="font-bold text-xl">Bē</span>
         </a>
       </div>

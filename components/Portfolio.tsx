@@ -5,11 +5,25 @@ interface PortfolioProps {
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ isDarkMode }) => {
-  // Using 8 projects as per the design layout (2 rows x 4 columns) and available files
-  const projects = [1, 2, 3, 4, 5, 6, 7, 8];
+  // Project data with assigned categories
+  const projects = [
+    { id: 1, category: 'UI/UX' },
+    { id: 2, category: 'GRAPHIC DESIGN' },
+    { id: 3, category: 'UI/UX' },
+    { id: 4, category: 'GRAPHIC DESIGN' },
+    { id: 5, category: 'UI/UX' },
+    { id: 6, category: 'GRAPHIC DESIGN' },
+    { id: 7, category: 'UI/UX' },
+    { id: 8, category: 'GRAPHIC DESIGN' },
+  ];
   const [activeCategory, setActiveCategory] = useState('ALL');
 
   const categories = ['ALL', 'UI/UX', 'GRAPHIC DESIGN'];
+
+  // Filter projects based on active category
+  const filteredProjects = activeCategory === 'ALL' 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
 
   return (
     <section 
@@ -45,14 +59,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ isDarkMode }) => {
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1440px] mx-auto">
-        {projects.map((item) => (
-          <div key={item} className="group relative w-full aspect-[4/3] bg-gray-200 overflow-hidden cursor-pointer">
+        {filteredProjects.map((project) => (
+          <div key={project.id} className="group relative w-full aspect-[4/3] bg-gray-200 overflow-hidden cursor-pointer">
             <img 
-              src={`/images/portfolio/P-${item}.jpg`} 
-              alt={`Project ${item}`}
+              src={`/images/portfolio/P-${project.id}.jpg`} 
+              alt={`Project ${project.id}`}
               className="w-full h-full object-cover"
             />
-            {item === 8 ? (
+            {project.id === 8 ? (
               /* Last item: Permanent overlay + Plus icon */
               <div className="absolute inset-0 bg-[#252525]/65 flex items-center justify-center">
                  <div className="relative w-10 h-10">

@@ -1,11 +1,71 @@
-import React from 'react';
-import { Instagram, Dribbble, Figma } from 'lucide-react';
+import React, { useState } from 'react';
+import { Instagram, Dribbble, Figma, CheckCircle } from 'lucide-react';
 
 interface ContactProps {
   isDarkMode: boolean;
 }
 
 export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (errors[name as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors = { name: '', email: '', message: '' };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      // Simulate API call
+      console.log('Form submitted:', formData);
+      setIsSubmitted(true);
+      // Reset form after delay if needed, or keep success message
+      // setFormData({ name: '', email: '', message: '' });
+    }
+  };
+
   return (
     <>
       <section 
@@ -33,61 +93,94 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             </p>
             
             <div className="flex gap-6 mt-8">
-                <a href="#" className="text-primary hover:text-yellow-500 transition-colors">
+                <a href="https://www.figma.com" className="text-primary hover:text-yellow-500 transition-colors">
                     <Figma size={24} />
                 </a>
-                <a href="#" className="text-primary hover:text-yellow-500 transition-colors">
+                <a href="https://www.instagram.com" className="text-primary hover:text-yellow-500 transition-colors">
                     <Instagram size={24} />
                 </a>
-                <span className="text-primary font-bold text-sm flex items-center">Bē</span>
+                <a href="https://www.behance.net" className="text-primary font-bold text-sm flex items-center">
+                    Bē
+                </a>
             </div>
           </div>
 
           {/* Right Side - Form */}
           <div className="lg:w-1/2">
-            <form className="flex flex-col gap-6">
-                <div>
-                    <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
-                        Name
-                    </label>
-                    <input 
-                        type="text" 
-                        placeholder="Write your name here"
-                        className="w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                </div>
-                
-                <div>
-                    <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
-                        Email
-                    </label>
-                    <input 
-                        type="email" 
-                        placeholder="Write your email here"
-                        className="w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                </div>
+            {isSubmitted ? (
+               <div className={`flex flex-col items-center justify-center h-full p-8 rounded-lg ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'}`}>
+                  <CheckCircle size={64} className="text-green-500 mb-4" />
+                  <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Message Sent!</h3>
+                  <p className={`text-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    Thank you for reaching out. I'll get back to you shortly.
+                  </p>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="mt-6 text-primary hover:underline"
+                  >
+                    Send another message
+                  </button>
+               </div>
+            ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                    <div>
+                        <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
+                            Name *
+                        </label>
+                        <input 
+                            type="text" 
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Write your name here"
+                            className={`w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all
+                              ${errors.name ? 'ring-2 ring-red-500' : 'focus:ring-primary'}`}
+                        />
+                        {errors.name && <span className="text-red-500 text-sm mt-1">{errors.name}</span>}
+                    </div>
+                    
+                    <div>
+                        <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
+                            Email *
+                        </label>
+                        <input 
+                            type="email" 
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Write your email here"
+                            className={`w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all
+                              ${errors.email ? 'ring-2 ring-red-500' : 'focus:ring-primary'}`}
+                        />
+                        {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
+                    </div>
 
-                <div>
-                    <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
-                        Message
-                    </label>
-                    <textarea 
-                        rows={5}
-                        placeholder="Write your message here"
-                        className="w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                    ></textarea>
-                </div>
+                    <div>
+                        <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
+                            Message *
+                        </label>
+                        <textarea 
+                            rows={5}
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            placeholder="Write your message here"
+                            className={`w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all resize-none
+                              ${errors.message ? 'ring-2 ring-red-500' : 'focus:ring-primary'}`}
+                        ></textarea>
+                         {errors.message && <span className="text-red-500 text-sm mt-1">{errors.message}</span>}
+                    </div>
 
-                <div className="flex justify-end mt-4">
-                    <button 
-                        type="button"
-                        className="bg-primary text-white font-medium px-12 py-3 rounded-full hover:bg-yellow-500 transition-colors shadow-md"
-                    >
-                        Send
-                    </button>
-                </div>
-            </form>
+                    <div className="flex justify-end mt-4">
+                        <button 
+                            type="submit"
+                            className="bg-primary text-white font-medium px-12 py-3 rounded-full hover:bg-yellow-500 transition-colors shadow-md"
+                        >
+                            Send
+                        </button>
+                    </div>
+                </form>
+            )}
           </div>
         </div>
       </section>
