@@ -72,16 +72,18 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
         id="contact" 
         className={`relative w-full pt-12 pb-20 md:pt-20 md:pb-40 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
       >
-        <div className="flex items-center justify-center mb-16">
+        <div 
+          className="flex items-center justify-center mb-16"
+        >
           <h2 className={`text-3xl font-medium tracking-wide ${isDarkMode ? 'text-white' : 'text-black'}`}>
-            CONTACT
+            CONTACT ME
           </h2>
           <div className={`h-0.5 w-16 ml-4 ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-16 justify-between max-w-7xl mx-auto">
-          {/* Left Side */}
-          <div className="lg:w-5/12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+          {/* Left: Contact Info */}
+          <div>
             <h3 className="font-marker text-5xl text-primary mb-8">
               Let's Work
             </h3>
@@ -108,8 +110,8 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             </div>
           </div>
 
-          {/* Right Side - Form */}
-          <div className="lg:w-1/2">
+          {/* Right: Form */}
+          <div>
             {isSubmitted ? (
                <div className={`flex flex-col items-center justify-center h-full p-8 rounded-lg ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'}`}>
                   <CheckCircle size={64} className="text-green-500 mb-4" />

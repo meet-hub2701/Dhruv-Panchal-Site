@@ -27,16 +27,22 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
       <div className={`relative w-full max-w-[1000px] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 p-4 md:p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
         
         {/* Left Image */}
-        <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex-shrink-0">
-          <img 
-            src="/images/about/Dhruv-Image.png" 
-            alt="Dhruv Panchal" 
-            className="w-full h-full object-cover grayscale" 
-          />
+        <div 
+          className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex-shrink-0"
+        >
+          <div className="absolute inset-0 bg-gray-200 grayscale contrast-125 brightness-110">
+            <img 
+              src="/images/about/Dhruv-Image.png" 
+              alt="Dhruv Panchal" 
+              className="w-full h-full object-cover" 
+            />
+          </div>
         </div>
 
         {/* Right Content */}
-        <div className="flex flex-col items-start z-10 w-full md:w-auto">
+        <div 
+          className="flex flex-col items-start z-10 w-full md:w-auto"
+        >
           {/* ABOUT Header */}
           <div className="flex items-center gap-4 mb-2">
             <h3 className={`text-2xl font-normal tracking-wide ${isDarkMode ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
@@ -96,7 +102,9 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
         </div>
 
         {/* Signature - Adjusted Position */}
-        <div className="absolute right-6 bottom-16 md:right-16 md:bottom-20 z-20 hidden md:block">
+        <div 
+          className="absolute right-6 bottom-16 md:right-16 md:bottom-20 z-20 hidden md:block"
+        >
            <img 
              src="/images/about/signature.png" 
              alt="Signature" 

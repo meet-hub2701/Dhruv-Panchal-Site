@@ -31,28 +31,31 @@ export const Portfolio: React.FC<PortfolioProps> = ({ isDarkMode }) => {
       className={`relative w-full py-12 md:py-24 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
     >
       {/* Header */}
-      <div className="flex items-center justify-center gap-4 mb-8">
-        <h2 className={`text-4xl font-sans text-center ${isDarkMode ? 'text-white' : 'text-black'}`}>
+      <div 
+        className="flex items-center justify-center gap-4 mb-8"
+      >
+        <div className={`h-[2px] w-[50px] md:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+        <h2 className={`font-sans text-3xl md:text-4xl font-bold tracking-widest ${isDarkMode ? 'text-white' : 'text-black'}`}>
           PORTFOLIO
         </h2>
-        <div className={`h-[2px] w-[70px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+        <div className={`h-[2px] w-[50px] md:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
       </div>
 
       {/* Category Tabs */}
-      <div className="flex justify-center gap-12 mb-12 flex-wrap">
-        {categories.map((category) => (
-          <button 
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`relative text-base font-sans tracking-wide transition-colors
-              ${isDarkMode ? 'text-white' : 'text-black'}
-              ${activeCategory === category ? 'font-medium' : 'font-normal hover:opacity-70'}
-            `}
+      <div 
+        className="flex justify-center gap-4 mb-12"
+      >
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`text-sm md:text-base font-sans font-medium tracking-wide transition-colors ${
+              activeCategory === cat 
+                ? 'text-primary' 
+                : isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'
+            }`}
           >
-            {category}
-            {activeCategory === category && (
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[25px] h-[3px] bg-[#FFB800]"></div>
-            )}
+            {cat}
           </button>
         ))}
       </div>
