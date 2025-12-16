@@ -86,13 +86,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ isDarkMode }) => {
           </div>
         ))}
       </div>
-
-      {/* Pagination */}
-      <div className="flex justify-center items-center gap-3 mt-16">
-        <button className="w-2 h-2 rounded-full bg-[#FFB800]"></button>
-        <button className={`w-2 h-2 rounded-full ${isDarkMode ? 'bg-white/25' : 'bg-black/25'}`}></button>
-        <button className={`w-2 h-2 rounded-full ${isDarkMode ? 'bg-white/25' : 'bg-black/25'}`}></button>
-      </div>
     </section>
   );
 };

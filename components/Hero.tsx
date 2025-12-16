@@ -11,7 +11,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
-  const words = ["UI/UX Designer", "Graphic Designer", "Web Developer"];
+  const words = ["Frontend Developer", "Fullstack Developer", "Jamstack Developer"];
 
   useEffect(() => {
     const handleTyping = () => {
@@ -65,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
         className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 hidden md:block"
       >
         <div className={`rotate-90 origin-center whitespace-nowrap tracking-[0.3em] text-xs font-semibold ${isDarkMode ? 'text-white' : 'text-black'}`}>
-          WEB DESIGNER
+          Fullstack Developer
         </div>
       </div>
 

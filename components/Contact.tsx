@@ -207,7 +207,7 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
         </h2>
         
         <p className="text-black/60 text-xs mt-4">
-            Copyright by Dhruv Panchal 2023
+            &copy; Copyright by Dhruv Panchal {new Date().getFullYear()}
         </p>
       </footer>
     </>
