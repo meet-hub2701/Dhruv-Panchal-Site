@@ -52,9 +52,9 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
 
           {/* Description */}
           <p className={`text-base font-normal leading-relaxed max-w-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
-            Detail-oriented team player with strong organizational skills. 
-            Ability to handle multiple projects simultaneously with a high 
-            degree of accuracy.
+            With a Master's from GTU, I bridge the gap between logic and creativity. 
+            I specialize in Graphic Design and UI/UX, building clean, intuitive interfaces that just work. 
+            My focus is simple: modern aesthetics, seamless flows, and designs that truly connect with people.
           </p>
           
           {/* SKILLS Header */}
