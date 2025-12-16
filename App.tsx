@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { Specialities } from './components/Specialities';
 import { Portfolio } from './components/Portfolio';
 import { Contact } from './components/Contact';
 
@@ -26,6 +27,7 @@ function App() {
       <main>
         <Hero isDarkMode={isDarkMode} />
         <About isDarkMode={isDarkMode} />
+        <Specialities isDarkMode={isDarkMode} />
         <Portfolio isDarkMode={isDarkMode} />
         <Contact isDarkMode={isDarkMode} />
       </main>
