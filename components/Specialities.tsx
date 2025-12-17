@@ -102,12 +102,15 @@ export const Specialities: React.FC<SpecialitiesProps> = ({ isDarkMode }) => {
         transformOrigin: "bottom center",
       };
 
+  // Duplicate images for seamless loop on mobile
+  const seamlessImages = [...sliderImages, ...sliderImages];
+
   return (
     <motion.section
       ref={sectionRef}
       id="specialities"
       style={animationStyle}
-      className={`relative ${isDarkMode ? 'bg-dark' : 'bg-white'} ${isMobile ? 'h-auto py-12' : 'h-[300vh]'}`}
+      className={`relative ${isDarkMode ? 'bg-dark' : 'bg-white'} ${isMobile ? 'h-auto py-12 overflow-hidden' : 'h-[300vh]'}`}
     >
       <div className={`${isMobile ? '' : 'sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full'}`}>
         
@@ -116,39 +119,86 @@ export const Specialities: React.FC<SpecialitiesProps> = ({ isDarkMode }) => {
         </div>
 
         <div className="w-full">
-          <motion.div
-            ref={trackRef}
-            style={isMobile ? {} : { x, opacity }}
-            className={`flex gap-4 md:gap-7 will-change-transform ${isMobile ? 'overflow-x-auto pb-8 px-6' : ''}`}
-          >
-            {sliderImages.map((imgPath, index) => (
-              <div
-                key={`${imgPath}-${index}`}
-                className={`
-                  group relative
-                  w-[200px] sm:w-[250px] md:w-[353px] 
-                  p-10 md:p-14
-                  border rounded-[40px] flex-shrink-0 flex items-center justify-center aspect-square
-                  transition-all duration-500 ease-out
-                  ${isDarkMode 
-                    ? 'border-white/5 bg-[#1a1a1a]/40 backdrop-blur-sm hover:bg-[#1a1a1a]/80 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.1)]' 
-                    : 'border-black/5 bg-gray-50/50 backdrop-blur-sm hover:bg-white hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.15)]'}
-                `}
+          {isMobile ? (
+            /* MOBILE: Infinite Marquee */
+            <div className="flex overflow-hidden">
+               <motion.div
+                className="flex gap-4"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear",
+                  },
+                }}
+                style={{ width: "fit-content" }}
               >
-                <img
-                  src={imgPath}
-                  alt={`Technology ${index + 1}`}
+                {seamlessImages.map((imgPath, index) => (
+                  <div
+                    key={`mobile-${index}`}
+                    className={`
+                      group relative
+                      w-[140px]
+                      p-6
+                      border rounded-[30px] flex-shrink-0 flex items-center justify-center aspect-square
+                      ${isDarkMode 
+                        ? 'border-white/5 bg-[#1a1a1a]/40 backdrop-blur-sm' 
+                        : 'border-black/5 bg-gray-50/50 backdrop-blur-sm'}
+                    `}
+                  >
+                    <img
+                      src={imgPath}
+                      alt={`Technology ${index + 1}`}
+                      className={`
+                        w-full h-full object-contain
+                        ${isDarkMode 
+                          ? 'brightness-0 invert opacity-60' 
+                          : 'brightness-0 opacity-60'}
+                      `}
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          ) : (
+            /* DESKTOP: Scroll Animation */
+            <motion.div
+              ref={trackRef}
+              style={{ x, opacity }}
+              className="flex gap-7 will-change-transform"
+            >
+              {sliderImages.map((imgPath, index) => (
+                <div
+                  key={`desktop-${index}`}
                   className={`
-                    w-full h-full object-contain transition-all duration-500 
+                    group relative
+                    w-[250px] md:w-[353px] 
+                    p-10 md:p-14
+                    border rounded-[40px] flex-shrink-0 flex items-center justify-center aspect-square
+                    transition-all duration-500 ease-out
                     ${isDarkMode 
-                      ? 'brightness-0 invert opacity-60 group-hover:filter-none group-hover:opacity-100' 
-                      : 'brightness-0 opacity-60 group-hover:opacity-100'}
+                      ? 'border-white/5 bg-[#1a1a1a]/40 backdrop-blur-sm hover:bg-[#1a1a1a]/80 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.1)]' 
+                      : 'border-black/5 bg-gray-50/50 backdrop-blur-sm hover:bg-white hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.15)]'}
                   `}
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </motion.div>
+                >
+                  <img
+                    src={imgPath}
+                    alt={`Technology ${index + 1}`}
+                    className={`
+                      w-full h-full object-contain transition-all duration-500 
+                      ${isDarkMode 
+                        ? 'brightness-0 invert opacity-60 group-hover:filter-none group-hover:opacity-100' 
+                        : 'brightness-0 opacity-60 group-hover:opacity-100'}
+                    `}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
     </motion.section>
