@@ -35,62 +35,111 @@ interface SpecialitiesProps {
 }
 
 export const Specialities: React.FC<SpecialitiesProps> = ({ isDarkMode }) => {
-  // Duplicate images for seamless loop
-  const seamlessImages = [...sliderImages, ...sliderImages];
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const [scrollDistance, setScrollDistance] = useState(0);
+  const [startOffset, setStartOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (trackRef.current) {
+        const totalWidth = trackRef.current.scrollWidth;
+        const scroll = totalWidth - width;
+
+        const buffer = width * 0.03; // prevents last item cut-off
+        setScrollDistance(scroll > 0 ? scroll + buffer : 0);
+        setStartOffset(width);
+      }
+
+      setIsMobile(width < 1024);
+    };
+
+    handleResize();
+    // Slight delay to ensure DOM is fully rendered
+    setTimeout(handleResize, 100);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [startOffset, -scrollDistance]
+  );
+
+  const opacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.97]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["0px", "40px"]);
+
+  const animationStyle = isMobile
+    ? {}
+    : {
+        scale,
+        borderBottomLeftRadius: borderRadius,
+        borderBottomRightRadius: borderRadius,
+        transformOrigin: "bottom center",
+      };
 
   return (
-    <section
+    <motion.section
+      ref={sectionRef}
       id="specialities"
-      className={`relative py-12 md:py-24 overflow-hidden ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+      style={animationStyle}
+      className={`relative ${isDarkMode ? 'bg-dark' : 'bg-white'} ${isMobile ? 'h-auto py-12' : 'h-[300vh]'}`}
     >
-      <div className="w-full container mx-auto mb-16">
-        <Info infoData={infoData} isDarkMode={isDarkMode} />
-      </div>
+      <div className={`${isMobile ? '' : 'sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full'}`}>
+        
+        <div className="w-full container mx-auto mb-10 md:mb-16 px-4">
+          <Info infoData={infoData} isDarkMode={isDarkMode} />
+        </div>
 
-      <div className="flex overflow-hidden">
-        <motion.div
-          className="flex gap-4 md:gap-7 will-change-transform"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 40,
-              ease: "linear",
-            },
-          }}
-          style={{ width: "fit-content" }}
-        >
-          {seamlessImages.map((imgPath, index) => (
-            <div
-              key={`${imgPath}-${index}`}
-              className={`
-                group relative
-                w-[200px] sm:w-[250px] md:w-[353px] 
-                p-10 md:p-14
-                border rounded-[40px] flex-shrink-0 flex items-center justify-center aspect-square
-                transition-all duration-500 ease-out
-                ${isDarkMode 
-                  ? 'border-white/5 bg-[#1a1a1a]/40 backdrop-blur-sm hover:bg-[#1a1a1a]/80 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.1)]' 
-                  : 'border-black/5 bg-gray-50/50 backdrop-blur-sm hover:bg-white hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.15)]'}
-              `}
-            >
-              <img
-                src={imgPath}
-                alt={`Technology ${index + 1}`}
+        <div className="w-full">
+          <motion.div
+            ref={trackRef}
+            style={isMobile ? {} : { x, opacity }}
+            className={`flex gap-4 md:gap-7 will-change-transform ${isMobile ? 'overflow-x-auto pb-8 px-6' : ''}`}
+          >
+            {sliderImages.map((imgPath, index) => (
+              <div
+                key={`${imgPath}-${index}`}
                 className={`
-                  w-full h-full object-contain transition-all duration-500 
+                  group relative
+                  w-[200px] sm:w-[250px] md:w-[353px] 
+                  p-10 md:p-14
+                  border rounded-[40px] flex-shrink-0 flex items-center justify-center aspect-square
+                  transition-all duration-500 ease-out
                   ${isDarkMode 
-                    ? 'brightness-0 invert opacity-60 group-hover:filter-none group-hover:opacity-100' 
-                    : 'brightness-0 opacity-60 group-hover:opacity-100'}
+                    ? 'border-white/5 bg-[#1a1a1a]/40 backdrop-blur-sm hover:bg-[#1a1a1a]/80 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.1)]' 
+                    : 'border-black/5 bg-gray-50/50 backdrop-blur-sm hover:bg-white hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,193,7,0.15)]'}
                 `}
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </motion.div>
+              >
+                <img
+                  src={imgPath}
+                  alt={`Technology ${index + 1}`}
+                  className={`
+                    w-full h-full object-contain transition-all duration-500 
+                    ${isDarkMode 
+                      ? 'brightness-0 invert opacity-60 group-hover:filter-none group-hover:opacity-100' 
+                      : 'brightness-0 opacity-60 group-hover:opacity-100'}
+                  `}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

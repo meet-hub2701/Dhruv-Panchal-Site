@@ -192,7 +192,7 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
       {/* Footer */}
       <footer className="w-full bg-primary py-12 px-6 flex flex-col items-center justify-center gap-6">
         <ul className="flex gap-6 md:gap-12 flex-wrap justify-center">
-            {['HOME', 'ABOUT', 'PORTFOLIO', 'RESUME', 'CONTACT'].map((item) => (
+            {['HOME', 'ABOUT', 'SPECIALITIES', 'PORTFOLIO', 'RESUME', 'CONTACT'].map((item) => (
                 <li key={item}>
                     <a href={`#${item.toLowerCase()}`} className="text-black text-sm font-medium hover:text-white transition-colors">
                         {item}
