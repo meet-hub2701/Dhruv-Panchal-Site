@@ -43,27 +43,39 @@ export const Specialities: React.FC<SpecialitiesProps> = ({ isDarkMode }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    const calculateDimensions = () => {
       const width = window.innerWidth;
+      setIsMobile(width < 1024);
 
       if (trackRef.current) {
         const totalWidth = trackRef.current.scrollWidth;
         const scroll = totalWidth - width;
-
-        const buffer = width * 0.03; // prevents last item cut-off
+        const buffer = width * 0.05; // Slightly increased buffer
+        
         setScrollDistance(scroll > 0 ? scroll + buffer : 0);
         setStartOffset(width);
       }
-
-      setIsMobile(width < 1024);
     };
 
-    handleResize();
-    // Slight delay to ensure DOM is fully rendered
-    setTimeout(handleResize, 100);
+    // Initial calculation
+    calculateDimensions();
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // ResizeObserver monitors the track content itself (robust against asset loading)
+    const resizeObserver = new ResizeObserver(() => {
+      calculateDimensions();
+    });
+
+    if (trackRef.current) {
+      resizeObserver.observe(trackRef.current);
+    }
+
+    // Window resize listener
+    window.addEventListener("resize", calculateDimensions);
+    
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", calculateDimensions);
+    };
   }, []);
 
   const { scrollYProgress } = useScroll({
