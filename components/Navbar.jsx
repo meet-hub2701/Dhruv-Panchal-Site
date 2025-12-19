@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Moon, Sun, Menu, X, FileText } from 'lucide-react';
 
 const navItems = [
@@ -164,13 +165,37 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
                     >
                         {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
-                    <button onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? (
-                            <X size={24} className={isDarkMode ? 'text-white' : 'text-black'} />
-                        ) : (
-                            <Menu size={24} className={isDarkMode ? 'text-white' : 'text-black'} />
-                        )}
-                    </button>
+                    <motion.button
+                        onClick={() => setIsOpen(!isOpen)}
+                        whileTap={{ scale: 0.9 }}
+                        className="relative w-8 h-8 flex items-center justify-center p-0"
+                    >
+                        <AnimatePresence mode="wait">
+                            {isOpen ? (
+                                <motion.div
+                                    key="close"
+                                    initial={{ rotate: -90, opacity: 0 }}
+                                    animate={{ rotate: 0, opacity: 1 }}
+                                    exit={{ rotate: 90, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute inset-0 flex items-center justify-center"
+                                >
+                                    <X size={24} className={isDarkMode ? 'text-white' : 'text-black'} />
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="menu"
+                                    initial={{ rotate: 90, opacity: 0 }}
+                                    animate={{ rotate: 0, opacity: 1 }}
+                                    exit={{ rotate: -90, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute inset-0 flex items-center justify-center"
+                                >
+                                    <Menu size={24} className={isDarkMode ? 'text-white' : 'text-black'} />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.button>
                 </div>
 
                 {/* Mobile Menu Dropdown */}

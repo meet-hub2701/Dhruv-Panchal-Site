@@ -40,7 +40,7 @@ export const Hero = ({ isDarkMode }) => {
         >
             {/* Social Icons - Mobile: Bottom Row, Desktop: Left Column */}
             <div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 xl:translate-x-0 xl:bottom-auto xl:left-16 xl:top-1/2 xl:-translate-y-1/2 flex flex-row xl:flex-col gap-8 z-20"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:bottom-auto lg:left-16 lg:top-1/2 lg:-translate-y-1/2 flex flex-row lg:flex-col gap-8 z-20"
             >
                 <a href="https://x.com" target="_blank" rel="noopener noreferrer" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
                     <Twitter size={24} />
@@ -58,7 +58,7 @@ export const Hero = ({ isDarkMode }) => {
 
             {/* Right Vertical Text */}
             <div
-                className="absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 hidden xl:block"
+                className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 hidden lg:block"
             >
                 <div className={`rotate-90 origin-center whitespace-nowrap tracking-widest text-sm font-semibold ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
                     Fullstack Developer
