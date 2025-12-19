@@ -36,7 +36,7 @@ export const Hero = ({ isDarkMode }) => {
     return (
         <section
             id="home"
-            className={`relative w-full min-h-[100dvh] xl:min-h-[815px] flex flex-col justify-center items-center overflow-hidden transition-colors duration-500 pt-20 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+            className={`relative w-full flex flex-col items-center overflow-hidden transition-colors duration-500 pt-32 lg:pt-48 pb-20 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
         >
             {/* Social Icons - Mobile: Bottom Row, Desktop: Left Column */}
             <div
@@ -68,7 +68,7 @@ export const Hero = ({ isDarkMode }) => {
             {/* Main Content */}
             <div className="flex flex-col items-center z-10">
                 <div
-                    className="w-64 h-64 xl:w-80 xl:h-80 rounded-full overflow-hidden mb-8 border-4 border-transparent shadow-2xl"
+                    className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden mb-8 border-4 border-transparent shadow-2xl"
                 >
                     <img
                         src="/images/home/Dhruv-image.png"
@@ -78,13 +78,13 @@ export const Hero = ({ isDarkMode }) => {
                 </div>
 
                 <h1
-                    className="font-marker text-3xl sm:text-4xl xl:text-6xl text-primary mb-4 text-center"
+                    className="font-marker text-3xl sm:text-4xl lg:text-6xl text-primary mb-4 text-center"
                 >
                     Dhruv Panchal
                 </h1>
 
                 <p
-                    className={`text-xl xl:text-2xl font-light h-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}
+                    className={`text-xl lg:text-2xl font-light h-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}`}
                 >
                     I am a <span className="font-semibold text-primary">{text}</span>
                     <span className="animate-pulse">|</span>

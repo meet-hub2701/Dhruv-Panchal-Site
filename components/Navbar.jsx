@@ -199,20 +199,28 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
                 </div>
 
                 {/* Mobile Menu Dropdown */}
-                {isOpen && (
-                    <div className={`absolute top-full left-0 w-full py-8 px-6 flex flex-col gap-6 shadow-2xl transition-colors ${isDarkMode ? 'bg-dark border-t border-white/10' : 'bg-white border-t border-black/5'}`}>
-                        {navItems.map((item) => (
-                            <a
-                                key={item.label}
-                                href={item.href}
-                                onClick={() => handleNavClick(item.label, item.href)}
-                                className={`text-lg font-medium tracking-wide text-center ${activeSelect === item.label ? 'text-primary' : (isDarkMode ? 'text-white' : 'text-black')}`}
-                            >
-                                {item.label}
-                            </a>
-                        ))}
-                    </div>
-                )}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ x: '-100%', opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: '-100%', opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className={`absolute top-full left-0 w-full py-8 px-6 flex flex-col gap-6 shadow-xl border-t ${isDarkMode ? 'bg-dark border-white/10' : 'bg-white border-black/5'}`}
+                        >
+                            {navItems.map((item) => (
+                                <a
+                                    key={item.label}
+                                    href={item.href}
+                                    onClick={() => handleNavClick(item.label, item.href)}
+                                    className={`text-lg font-medium tracking-wide text-center ${activeSelect === item.label ? 'text-primary' : (isDarkMode ? 'text-white' : 'text-black')}`}
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
         </>
     );

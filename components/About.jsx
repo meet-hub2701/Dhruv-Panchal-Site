@@ -4,24 +4,24 @@ export const About = ({ isDarkMode }) => {
     return (
         <section
             id="about"
-            className={`relative w-full py-12 xl:py-24 px-6 xl:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+            className={`relative w-full py-12 lg:py-24 px-6 lg:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
         >
             <div className="max-w-7xl mx-auto flex flex-col items-center">
 
                 {/* Header */}
-                <div className="flex items-center gap-4 mb-12 xl:mb-16">
-                    <div className={`h-[2px] w-[50px] xl:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
-                    <h2 className={`font-sans text-3xl xl:text-4xl font-bold tracking-widest uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>
+                <div className="flex items-center gap-4 mb-12 lg:mb-16">
+                    <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+                    <h2 className={`font-sans text-3xl lg:text-4xl font-bold tracking-widest uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>
                         About
                     </h2>
-                    <div className={`h-[2px] w-[50px] xl:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+                    <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
                 </div>
 
-                <div className={`relative w-full max-w-[1000px] flex flex-col xl:flex-row items-center justify-center gap-10 xl:gap-20 p-4 xl:p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
+                <div className={`relative w-full max-w-[1000px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 p-4 lg:p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
 
                     {/* Left Image */}
                     <div
-                        className="relative w-full max-w-[300px] aspect-square h-auto xl:w-[400px] xl:h-[400px] flex-shrink-0"
+                        className="relative w-full max-w-[300px] aspect-square h-auto lg:w-[400px] lg:h-[400px] flex-shrink-0"
                     >
                         <div className="absolute inset-0 bg-gray-200 grayscale contrast-125 brightness-110">
                             <img
@@ -34,7 +34,7 @@ export const About = ({ isDarkMode }) => {
 
                     {/* Right Content */}
                     <div
-                        className="flex flex-col items-start z-10 w-full xl:w-auto"
+                        className="flex flex-col items-start z-10 w-full lg:w-auto"
                     >
                         {/* Name - Removed Small About Header */}
                         <h2 className={`font-bold text-3xl sm:text-[40px] leading-tight mb-6 ${isDarkMode ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'Roboto' }}>

@@ -66,17 +66,17 @@ export const Contact = ({ isDarkMode }) => {
         <>
             <section
                 id="contact"
-                className={`relative w-full pt-12 pb-20 xl:pt-20 xl:pb-40 px-6 xl:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+                className={`relative w-full pt-12 pb-20 lg:pt-20 lg:pb-40 px-6 md:px-12 emd:px-20 lg:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
             >
                 <div className="flex items-center justify-center gap-4 mb-16">
-                    <div className={`h-[2px] w-[50px] xl:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
-                    <h2 className={`font-sans text-3xl xl:text-4xl font-bold tracking-widest uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>
+                    <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+                    <h2 className={`font-sans text-3xl lg:text-4xl font-bold tracking-widest uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>
                         Contact
                     </h2>
-                    <div className={`h-[2px] w-[50px] xl:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+                    <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
                 </div>
 
-                <div className="max-w-6xl mx-auto grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-24">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
                     {/* Left: Contact Info */}
                     <div>
                         <h3 className="font-marker text-5xl text-primary mb-8">
@@ -187,7 +187,7 @@ export const Contact = ({ isDarkMode }) => {
 
             {/* Footer */}
             <footer className="w-full bg-primary py-12 px-6 flex flex-col items-center justify-center gap-6">
-                <ul className="flex gap-6 xl:gap-12 flex-wrap justify-center">
+                <ul className="flex gap-6 lg:gap-12 flex-wrap justify-center">
                     {['HOME', 'ABOUT', 'SPECIALITIES', 'PORTFOLIO', 'RESUME', 'CONTACT'].map((item) => {
                         const isResume = item === 'RESUME';
                         const href = isResume ? '/Dhruv.pdf' : `#${item.toLowerCase()}`;
