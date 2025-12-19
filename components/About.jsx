@@ -4,7 +4,7 @@ export const About = ({ isDarkMode }) => {
     return (
         <section
             id="about"
-            className={`relative w-full py-12 lg:py-24 px-6 lg:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+            className={`relative w-full py-12 lg:py-24 px-6 md:px-12 emd:px-20 lg:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
         >
             <div className="max-w-7xl mx-auto flex flex-col items-center">
 
@@ -43,9 +43,7 @@ export const About = ({ isDarkMode }) => {
 
                         {/* Description */}
                         <p className={`text-base font-normal leading-relaxed max-w-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
-                            With a Master's from GTU, I bridge the gap between logic and creativity.
-                            I specialize in Graphic Design and UI/UX, building clean, intuitive interfaces that just work.
-                            My focus is simple: modern aesthetics, seamless flows, and designs that truly connect with people.
+                            I’m a Fullstack Developer with a Master’s from GTU, dedicated to bringing your vision to life. With deep experience in both design and development, I build solutions that are as functional as they are beautiful. From complex web apps to modern, minimalistic branding, I focus on the details that make your project stand out and truly resonate with your audience.
                         </p>
 
                         {/* SKILLS Header */}
@@ -61,34 +59,34 @@ export const About = ({ isDarkMode }) => {
                             {/* Column 1 */}
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Figma</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>React / Next.js</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Adobe XD</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Node.js</span>
                             </div>
 
                             {/* Column 2 */}
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Illustrator</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Tailwind CSS</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Sketch</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>MongoDB</span>
                             </div>
 
                             {/* Column 3 (Wrapping) */}
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Photoshop</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>JavaScript</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Signature - Adjusted Position */}
                     <div
-                        className="absolute right-6 bottom-16 lg:right-28 lg:bottom-10 z-20 hidden lg:block"
+                        className="absolute right-6 bottom-4 lg:right-28 lg:bottom-10 z-20"
                     >
                         <img
                             src="/images/about/signature.png"
@@ -98,9 +96,9 @@ export const About = ({ isDarkMode }) => {
                     </div>
 
                     {/* Vertical Text - Absolute Positioned */}
-                    <div className="absolute -right-28 top-1/2 -translate-y-1/2 hidden lg:block select-none pointer-events-none">
+                    <div className="absolute right-2 md:-right-24 lg:-right-32 top-1/2 -translate-y-1/2 select-none pointer-events-none">
                         <span
-                            className="block text-[120px] font-bold text-[#DBDBDB80] whitespace-nowrap"
+                            className="block text-[50px] md:text-[90px] lg:text-[120px] font-bold text-[#DBDBDB80] whitespace-nowrap"
                             style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(360deg)' }}
                         >
                             AUTHOR
