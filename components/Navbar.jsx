@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, FileText } from 'lucide-react';
 
 const navItems = [
     { label: 'Home', href: '#home' },
@@ -76,7 +76,7 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
     return (
         <>
             {/* Logo - Fixed Top Left */}
-            <div className="hidden md:block fixed top-8 left-12 z-50">
+            <div className="hidden xl:block fixed top-8 left-12 z-50">
                 <div className={`font-marker text-2xl tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-primary'}`}>
                     BIELAVIN
                 </div>
@@ -84,7 +84,7 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
 
             {/* Desktop Floating Pill Navbar */}
             <nav
-                className={`hidden md:flex fixed top-8 left-1/2 -translate-x-1/2 z-50 items-center gap-1 rounded-full px-2 py-2 shadow-2xl transition-all duration-300 ring-1 opacity-80 hover:opacity-100 backdrop-blur-xl
+                className={`hidden xl:flex fixed top-8 left-1/2 -translate-x-1/2 z-50 items-center gap-1 rounded-full px-2 py-2 shadow-2xl transition-all duration-300 ring-1 opacity-80 hover:opacity-100 backdrop-blur-xl
         ${isDarkMode
                         ? 'bg-[#1a1a1a]/60 ring-white/10'
                         : 'bg-white/60 ring-black/5'
@@ -106,8 +106,6 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
                         key={item.label}
                         ref={(el) => { itemRefs.current[item.label] = el; }}
                         href={item.href}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
                         onClick={() => handleNavClick(item.label, item.href)}
                         className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-200
               ${activeSelect === item.label
@@ -122,6 +120,18 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
 
                 <div className={`w-[1px] h-6 mx-2 ${isDarkMode ? 'bg-white/20' : 'bg-black/10'}`}></div>
 
+                {/* Resume Icon */}
+                <a
+                    href="/Dhruv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-2 rounded-full transition-colors z-10 ${isDarkMode ? 'text-white hover:bg-white/10' : 'text-black hover:bg-black/5'}`}
+                    aria-label="Resume"
+                    title="Resume"
+                >
+                    <FileText size={18} />
+                </a>
+
                 <button
                     onClick={toggleTheme}
                     className={`p-2 rounded-full transition-colors z-10 ${isDarkMode ? 'text-yellow-400 hover:bg-white/10' : 'text-gray-600 hover:bg-black/5'}`}
@@ -132,11 +142,22 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
             </nav>
 
             {/* Mobile Navbar (Standard Fixed Top) */}
-            <nav className={`md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'bg-dark/90 backdrop-blur-md border-b border-white/5' : 'bg-white/90 backdrop-blur-md border-b border-black/5'}`}>
+            <nav className={`xl:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'bg-dark/90 backdrop-blur-md border-b border-white/5' : 'bg-white/90 backdrop-blur-md border-b border-black/5'}`}>
                 <div className="text-primary font-marker text-xl tracking-wider">
                     Dhruv
                 </div>
                 <div className="flex items-center gap-4">
+                    {/* Mobile Resume Icon */}
+                    <a
+                        href="/Dhruv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`p-2 rounded-full ${isDarkMode ? 'text-white' : 'text-black'}`}
+                        aria-label="Resume"
+                    >
+                        <FileText size={20} />
+                    </a>
+
                     <button
                         onClick={toggleTheme}
                         className={`p-2 rounded-full ${isDarkMode ? 'text-yellow-400' : 'text-gray-600'}`}
@@ -159,8 +180,6 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
                             <a
                                 key={item.label}
                                 href={item.href}
-                                target={item.external ? "_blank" : undefined}
-                                rel={item.external ? "noopener noreferrer" : undefined}
                                 onClick={() => handleNavClick(item.label, item.href)}
                                 className={`text-lg font-medium tracking-wide text-center ${activeSelect === item.label ? 'text-primary' : (isDarkMode ? 'text-white' : 'text-black')}`}
                             >

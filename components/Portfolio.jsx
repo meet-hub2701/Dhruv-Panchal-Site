@@ -24,17 +24,17 @@ export const Portfolio = ({ isDarkMode }) => {
     return (
         <section
             id="portfolio"
-            className={`relative w-full py-12 md:py-24 px-6 md:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+            className={`relative w-full py-12 xl:py-24 px-6 xl:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
         >
             {/* Header */}
             <div
                 className="flex items-center justify-center gap-4 mb-8"
             >
-                <div className={`h-[2px] w-[50px] md:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
-                <h2 className={`font-sans text-3xl md:text-4xl font-bold tracking-widest ${isDarkMode ? 'text-white' : 'text-black'}`}>
+                <div className={`h-[2px] w-[50px] xl:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+                <h2 className={`font-sans text-3xl xl:text-4xl font-bold tracking-widest ${isDarkMode ? 'text-white' : 'text-black'}`}>
                     PORTFOLIO
                 </h2>
-                <div className={`h-[2px] w-[50px] md:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
+                <div className={`h-[2px] w-[50px] xl:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
             </div>
 
             {/* Category Tabs */}
@@ -45,9 +45,9 @@ export const Portfolio = ({ isDarkMode }) => {
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className={`text-sm md:text-base font-sans font-medium tracking-wide transition-colors ${activeCategory === cat
-                                ? 'text-primary'
-                                : isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'
+                        className={`text-sm xl:text-base font-sans font-medium tracking-wide transition-colors ${activeCategory === cat
+                            ? 'text-primary'
+                            : isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'
                             }`}
                     >
                         {cat}
@@ -56,7 +56,7 @@ export const Portfolio = ({ isDarkMode }) => {
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1440px] mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 max-w-[1440px] mx-auto">
                 {filteredProjects.map((project) => (
                     <div key={project.id} className="group relative w-full aspect-[4/3] bg-gray-200 overflow-hidden cursor-pointer">
                         <img
