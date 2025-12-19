@@ -86,7 +86,7 @@ export const About = ({ isDarkMode }) => {
 
                     {/* Signature - Adjusted Position */}
                     <div
-                        className="absolute right-6 bottom-4 lg:right-28 lg:bottom-10 z-20"
+                        className="absolute right-6 bottom-4 lg:right-28 lg:bottom-10 z-20 hidden lg:block"
                     >
                         <img
                             src="/images/about/signature.png"
@@ -96,7 +96,7 @@ export const About = ({ isDarkMode }) => {
                     </div>
 
                     {/* Vertical Text - Absolute Positioned */}
-                    <div className="absolute right-2 md:-right-24 lg:-right-32 top-1/2 -translate-y-1/2 select-none pointer-events-none">
+                    <div className="absolute right-2 md:-right-24 lg:-right-32 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden lg:block">
                         <span
                             className="block text-[50px] md:text-[90px] lg:text-[120px] font-bold text-[#DBDBDB80] whitespace-nowrap"
                             style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(360deg)' }}
