@@ -4,7 +4,7 @@ export const About = ({ isDarkMode }) => {
     return (
         <section
             id="about"
-            className={`relative w-full py-12 lg:py-24 px-6 md:px-12 emd:px-20 lg:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+            className={`relative w-full py-12 lg:py-24 px-6 md:px-12 lg:px-24 flex justify-center items-center overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
         >
             <div className="max-w-7xl mx-auto flex flex-col items-center">
 
@@ -17,11 +17,11 @@ export const About = ({ isDarkMode }) => {
                     <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
                 </div>
 
-                <div className={`relative w-full max-w-[1000px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 p-4 lg:p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
+                <div className={`relative w-full max-w-[1000px] flex flex-col xl:flex-row items-center justify-center gap-10 xl:gap-20 p-4 xl:p-8 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}>
 
                     {/* Left Image */}
                     <div
-                        className="relative w-full max-w-[300px] aspect-square h-auto lg:w-[400px] lg:h-[400px] flex-shrink-0"
+                        className="relative w-full max-w-[300px] aspect-square h-auto lg:w-[350px] lg:h-[300px] xl:w-[400px] xl:h-[400px] flex-shrink-0"
                     >
                         <div className="absolute inset-0 bg-gray-200 grayscale contrast-125 brightness-110">
                             <img
@@ -34,7 +34,7 @@ export const About = ({ isDarkMode }) => {
 
                     {/* Right Content */}
                     <div
-                        className="flex flex-col items-start z-10 w-full lg:w-auto"
+                        className="flex flex-col items-start z-10 w-full xl:w-auto"
                     >
                         {/* Name - Removed Small About Header */}
                         <h2 className={`font-bold text-3xl sm:text-[40px] leading-tight mb-6 ${isDarkMode ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'Roboto' }}>
@@ -86,7 +86,7 @@ export const About = ({ isDarkMode }) => {
 
                     {/* Signature - Adjusted Position */}
                     <div
-                        className="absolute right-6 bottom-4 lg:right-28 lg:bottom-10 z-20 hidden lg:block"
+                        className="absolute right-6 bottom-4 md:right-10 md:bottom-6 emd:right-[15%] emd:bottom-[4%] xl:right-28 xl:bottom-10 z-20 hidden md:block"
                     >
                         <img
                             src="/images/about/signature.png"
@@ -96,7 +96,7 @@ export const About = ({ isDarkMode }) => {
                     </div>
 
                     {/* Vertical Text - Absolute Positioned */}
-                    <div className="absolute right-2 md:-right-24 lg:-right-32 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden lg:block">
+                    <div className="absolute right-2 md:-right-28 lg:-right-32 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden md:block">
                         <span
                             className="block text-[50px] md:text-[90px] lg:text-[120px] font-bold text-[#DBDBDB80] whitespace-nowrap"
                             style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(360deg)' }}

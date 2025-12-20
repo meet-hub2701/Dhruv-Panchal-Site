@@ -108,7 +108,7 @@ export const Specialities = ({ isDarkMode }) => {
             style={animationStyle}
             className={`relative ${isDarkMode ? 'bg-dark' : 'bg-white'} ${isMobile ? 'h-auto py-12 overflow-hidden' : 'h-[300vh]'}`}
         >
-            <div className={`${isMobile ? '' : 'sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full'}`}>
+            <div className={`${isMobile ? '' : 'sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full pt-24'}`}>
 
                 <div className="w-full container mx-auto mb-10 md:mb-16 px-4">
                     <Info infoData={infoData} isDarkMode={isDarkMode} />
