@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Figma, Twitter } from 'lucide-react';
+
 
 export const Contact = ({ isDarkMode }) => {
 
@@ -32,32 +32,7 @@ export const Contact = ({ isDarkMode }) => {
                                 resonates with your audience, and makes a real difference.
                             </p>
 
-                            {/* Social Icons */}
-                            <div className="flex gap-6 mb-12">
-                                <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors">
-                                    <Twitter size={24} />
-                                </a>
-                                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors">
-                                    <Figma size={24} />
-                                </a>
-                                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors">
-                                    <Instagram size={24} />
-                                </a>
-                                <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" className="text-primary font-bold text-sm flex items-center hover:text-white transition-colors">
-                                    Bē
-                                </a>
-                            </div>
 
-                            {/* Profile Card Badge */}
-                            {/* <div className={`flex items-center gap-4 p-4 rounded-xl border max-w-sm transition-transform duration-300 hover:scale-105 shadow-lg ${isDarkMode ? 'bg-white/5 border-white/10 shadow-black/20' : 'bg-white border-gray-100 shadow-gray-200'}`}>
-                                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary shrink-0">
-                                    <img src="/images/about/Dhruv-Image.png" alt="Dhruv" className="w-full h-full object-cover" />
-                                </div>
-                                <div>
-                                    <h4 className={`font-bold text-base ${isDarkMode ? 'text-white' : 'text-black'}`}>Dhruv Panchal</h4>
-                                    <p className="text-xs text-primary tracking-wider uppercase">Fullstack Developer</p>
-                                </div>
-                            </div> */}
                         </div>
 
                         {/* Right: Calendly (Swapped to Right) */}
