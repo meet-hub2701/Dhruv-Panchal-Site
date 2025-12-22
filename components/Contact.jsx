@@ -1,72 +1,13 @@
-import React, { useState } from 'react';
-import { Instagram, Figma, CheckCircle, Twitter } from 'lucide-react';
+import React from 'react';
+import { Instagram, Figma, Twitter } from 'lucide-react';
 
 export const Contact = ({ isDarkMode }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-
-    const [errors, setErrors] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-        // Clear error when user types
-        if (errors[name]) {
-            setErrors(prev => ({ ...prev, [name]: '' }));
-        }
-    };
-
-    const validate = () => {
-        const newErrors = { name: '', email: '', message: '' };
-        let isValid = true;
-
-        if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
-            isValid = false;
-        }
-
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
-            isValid = false;
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid';
-            isValid = false;
-        }
-
-        if (!formData.message.trim()) {
-            newErrors.message = 'Message is required';
-            isValid = false;
-        }
-
-        setErrors(newErrors);
-        return isValid;
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (validate()) {
-            // Simulate API call
-            console.log('Form submitted:', formData);
-            setIsSubmitted(true);
-            // Reset form after delay if needed, or keep success message
-            // setFormData({ name: '', email: '', message: '' });
-        }
-    };
 
     return (
         <>
             <section
                 id="contact"
-                className={`relative w-full pt-12 pb-20 lg:pt-20 lg:pb-40 px-6 md:px-12 emd:px-20 lg:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
+                className={`relative w-full pt-12 pb-20 lg:pt-24 lg:pb-52 px-6 md:px-12 emd:px-20 lg:px-24 transition-colors duration-500 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
             >
                 <div className="flex items-center justify-center gap-4 mb-16">
                     <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
@@ -76,111 +17,61 @@ export const Contact = ({ isDarkMode }) => {
                     <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
                 </div>
 
-                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-                    {/* Left: Contact Info */}
-                    <div>
-                        <h3 className="font-marker text-5xl text-primary mb-8">
-                            Let's Work
-                        </h3>
-                        <p className={`text-lg leading-relaxed mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            It's important to have a brand that represents you and what you stand for.
-                            That's why I'm committed to helping you create a website that truly represents you,
-                            resonates with your audience, and makes a real difference. Together we can create
-                            a website that inspires, inspires and makes an impact. Let's do that!
-                        </p>
+                {/* Unified Contact Card */}
+                <div className={`max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.1)] lg:shadow-[0_0_80px_rgba(255,193,7,0.05)] border transition-all duration-500 hover:shadow-[0_0_100px_rgba(255,193,7,0.1)] ${isDarkMode ? 'bg-[#1a1a1a] border-white/5' : 'bg-white border-gray-200'}`}>
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
 
-                        <div className="flex gap-6 mt-8">
-                            <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-yellow-500 transition-colors">
-                                <Twitter size={24} />
-                            </a>
-                            <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-yellow-500 transition-colors">
-                                <Figma size={24} />
-                            </a>
-                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-yellow-500 transition-colors">
-                                <Instagram size={24} />
-                            </a>
-                            <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" className="text-primary font-bold text-sm flex items-center">
-                                Bē
-                            </a>
-                        </div>
-                    </div>
+                        {/* Left: Content & Profile (Swapped to Left) */}
+                        <div className="flex flex-col justify-center p-8 lg:p-16">
+                            <h3 className="font-marker text-4xl lg:text-5xl text-primary mb-6">
+                                Let's Work
+                            </h3>
+                            <p className={`text-base lg:text-lg leading-relaxed mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                                It's important to have a brand that represents you and what you stand for.
+                                That's why I'm committed to helping you create a website that truly represents you,
+                                resonates with your audience, and makes a real difference.
+                            </p>
 
-                    {/* Right: Form */}
-                    <div>
-                        {isSubmitted ? (
-                            <div className={`flex flex-col items-center justify-center h-full p-8 rounded-lg ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'}`}>
-                                <CheckCircle size={64} className="text-green-500 mb-4" />
-                                <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Message Sent!</h3>
-                                <p className={`text-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                                    Thank you for reaching out. I'll get back to you shortly.
-                                </p>
-                                <button
-                                    onClick={() => setIsSubmitted(false)}
-                                    className="mt-6 text-primary hover:underline"
-                                >
-                                    Send another message
-                                </button>
+                            {/* Social Icons */}
+                            <div className="flex gap-6 mb-12">
+                                <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors">
+                                    <Twitter size={24} />
+                                </a>
+                                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors">
+                                    <Figma size={24} />
+                                </a>
+                                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors">
+                                    <Instagram size={24} />
+                                </a>
+                                <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" className="text-primary font-bold text-sm flex items-center hover:text-white transition-colors">
+                                    Bē
+                                </a>
                             </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                                <div>
-                                    <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
-                                        Name *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        placeholder="Write your name here"
-                                        className={`w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all
-                              ${errors.name ? 'ring-2 ring-red-500' : 'focus:ring-primary'}`}
-                                    />
-                                    {errors.name && <span className="text-red-500 text-sm mt-1">{errors.name}</span>}
-                                </div>
 
+                            {/* Profile Card Badge */}
+                            {/* <div className={`flex items-center gap-4 p-4 rounded-xl border max-w-sm transition-transform duration-300 hover:scale-105 shadow-lg ${isDarkMode ? 'bg-white/5 border-white/10 shadow-black/20' : 'bg-white border-gray-100 shadow-gray-200'}`}>
+                                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary shrink-0">
+                                    <img src="/images/about/Dhruv-Image.png" alt="Dhruv" className="w-full h-full object-cover" />
+                                </div>
                                 <div>
-                                    <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
-                                        Email *
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        placeholder="Write your email here"
-                                        className={`w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all
-                              ${errors.email ? 'ring-2 ring-red-500' : 'focus:ring-primary'}`}
-                                    />
-                                    {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
+                                    <h4 className={`font-bold text-base ${isDarkMode ? 'text-white' : 'text-black'}`}>Dhruv Panchal</h4>
+                                    <p className="text-xs text-primary tracking-wider uppercase">Fullstack Developer</p>
                                 </div>
+                            </div> */}
+                        </div>
 
-                                <div>
-                                    <label className={`block mb-2 text-lg font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>
-                                        Message *
-                                    </label>
-                                    <textarea
-                                        rows={5}
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        placeholder="Write your message here"
-                                        className={`w-full bg-gray-100 p-4 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all resize-none
-                              ${errors.message ? 'ring-2 ring-red-500' : 'focus:ring-primary'}`}
-                                    ></textarea>
-                                    {errors.message && <span className="text-red-500 text-sm mt-1">{errors.message}</span>}
-                                </div>
+                        {/* Right: Calendly (Swapped to Right) */}
+                        <div className="w-full h-[600px] lg:h-[600px] relative">
+                            <iframe
+                                src={`https://calendly.com/imdhruv-dev/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=FFC107${isDarkMode ? '&background_color=1a1a1a&text_color=ffffff' : '&background_color=ffffff&text_color=000000'}`}
+                                width="100%"
+                                height="100%"
+                                frameBorder="0"
+                                title="Schedule a meeting"
+                                className="w-full h-full"
+                            ></iframe>
+                        </div>
 
-                                <div className="flex justify-end mt-4">
-                                    <button
-                                        type="submit"
-                                        className="bg-primary text-white font-medium w-full esm:w-auto px-8 em:px-10 md:px-12 emd:py-4 lg:px-12 xl:px-14 1xl:px-16 py-3 rounded-full hover:bg-yellow-500 transition-colors shadow-md"
-                                    >
-                                        Send
-                                    </button>
-                                </div>
-                            </form>
-                        )}
                     </div>
                 </div>
             </section>

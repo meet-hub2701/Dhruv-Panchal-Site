@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const Portfolio = ({ isDarkMode }) => {
-    // Project data with assigned categories
+    // Project data
     const projects = [
         { id: 1, category: 'UI/UX' },
         { id: 2, category: 'GRAPHIC DESIGN' },
@@ -12,14 +12,6 @@ export const Portfolio = ({ isDarkMode }) => {
         { id: 7, category: 'UI/UX' },
         { id: 8, category: 'GRAPHIC DESIGN' },
     ];
-    const [activeCategory, setActiveCategory] = useState('ALL');
-
-    const categories = ['ALL', 'UI/UX', 'GRAPHIC DESIGN'];
-
-    // Filter projects based on active category
-    const filteredProjects = activeCategory === 'ALL'
-        ? projects
-        : []; // Projects only visible in 'ALL' for now
 
     return (
         <section
@@ -37,29 +29,16 @@ export const Portfolio = ({ isDarkMode }) => {
                 <div className={`h-[2px] w-[50px] lg:w-[100px] ${isDarkMode ? 'bg-white' : 'bg-black'}`}></div>
             </div>
 
-            {/* Category Tabs */}
-            <div
-                className="flex justify-center gap-4 mb-12"
-            >
-                {categories.map((cat) => (
-                    <button
-                        key={cat}
-                        onClick={() => cat === 'ALL' && setActiveCategory(cat)}
-                        className={`text-sm lg:text-base font-sans font-medium tracking-wide transition-colors ${activeCategory === cat
-                            ? 'text-primary cursor-default'
-                            : cat === 'ALL'
-                                ? isDarkMode ? 'text-gray-400 hover:text-white cursor-pointer' : 'text-gray-600 hover:text-black cursor-pointer'
-                                : isDarkMode ? 'text-gray-600 cursor-default' : 'text-gray-400 cursor-default'
-                            }`}
-                    >
-                        {cat}
-                    </button>
-                ))}
+            {/* Sub-Header Label */}
+            <div className="flex justify-center mb-12">
+                <span className="text-lg lg:text-xl font-bold tracking-[0.5em] text-primary uppercase select-none opacity-90">
+                    PROJECTS
+                </span>
             </div>
 
             {/* Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1440px] mx-auto">
-                {filteredProjects.map((project) => (
+                {projects.map((project) => (
                     <div key={project.id} className="group relative w-full aspect-[4/3] bg-gray-200 overflow-hidden cursor-pointer">
                         <img
                             src={`/images/portfolio/P-${project.id}.jpg`}
