@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Instagram, Figma, Twitter } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const Hero = ({ isDarkMode }) => {
     const [text, setText] = useState('');
@@ -38,22 +38,23 @@ export const Hero = ({ isDarkMode }) => {
             id="home"
             className={`relative w-full flex flex-col items-center overflow-hidden transition-colors duration-500 pt-32 lg:pt-48 pb-20 ${isDarkMode ? 'bg-dark' : 'bg-white'}`}
         >
-            {/* Social Icons - Mobile: Bottom Row, Desktop: Left Column */}
+            {/* Left Vertical Scroll Indicator */}
             <div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:bottom-auto lg:left-16 lg:top-1/2 lg:-translate-y-1/2 flex flex-row lg:flex-col gap-8 z-20"
+                className="absolute left-8 lg:left-16 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-20 hidden lg:flex"
             >
-                <a href="https://x.com" target="_blank" rel="noopener noreferrer" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                    <Twitter size={24} />
-                </a>
-                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                    <Figma size={24} />
-                </a>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                    <Instagram size={24} />
-                </a>
-                <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" className={`transform hover:scale-110 transition-transform ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                    <span className="font-bold text-xl">Bē</span>
-                </a>
+                <div
+                    className={`text-xs uppercase tracking-[0.3em] font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                    style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+                >
+                    Scroll Down
+                </div>
+                <div className={`w-[1px] h-24 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'} relative overflow-hidden`}>
+                    <motion.div
+                        className={`absolute top-0 left-0 w-full h-1/2 ${isDarkMode ? 'bg-white' : 'bg-black'}`}
+                        animate={{ y: ["-100%", "200%"] }}
+                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    />
+                </div>
             </div>
 
             {/* Right Vertical Text */}

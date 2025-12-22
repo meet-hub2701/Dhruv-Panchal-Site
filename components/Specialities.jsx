@@ -108,9 +108,8 @@ export const Specialities = ({ isDarkMode }) => {
             style={animationStyle}
             className={`relative ${isDarkMode ? 'bg-dark' : 'bg-white'} ${isMobile ? 'h-auto py-12 overflow-hidden' : 'h-[300vh]'}`}
         >
-            <div className={`${isMobile ? '' : 'sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full pt-24'}`}>
-
-                <div className="w-full container mx-auto mb-10 md:mb-16 px-4">
+            <div className={`${isMobile ? '' : 'sticky top-0 h-screen flex flex-col justify-center overflow-hidden w-full pt-20'}`}>
+                <div className="w-full container mx-auto mb-6 lg:mb-8 px-4">
                     <Info infoData={infoData} isDarkMode={isDarkMode} />
                 </div>
 
@@ -171,8 +170,8 @@ export const Specialities = ({ isDarkMode }) => {
                                     key={`desktop-${index}`}
                                     className={`
                     group relative
-                    w-[250px] md:w-[353px] 
-                    p-10 md:p-14
+                    w-[220px] md:w-[250px] lg:w-[280px] xl:w-[300px] 
+                    p-6 md:p-8 xl:p-10
                     border rounded-[40px] flex-shrink-0 flex items-center justify-center aspect-square
                     transition-all duration-500 ease-out
                     ${isDarkMode

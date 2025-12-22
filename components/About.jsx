@@ -81,11 +81,15 @@ export const About = ({ isDarkMode }) => {
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
                                 <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>JavaScript</span>
                             </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Headless CMS</span>
+                            </div>
                         </div>
                     </div>
 
                     {/* Signature - Adjusted Position */}
-                    <div
+                    {/* <div
                         className="absolute right-6 bottom-4 md:right-10 md:bottom-6 emd:right-[15%] emd:bottom-[4%] xl:right-28 xl:bottom-10 z-20 hidden md:block"
                     >
                         <img
@@ -93,7 +97,7 @@ export const About = ({ isDarkMode }) => {
                             alt="Signature"
                             className={`w-[60px] h-auto object-contain opacity-90 ${isDarkMode ? 'invert' : ''}`}
                         />
-                    </div>
+                    </div> */}
 
                     {/* Vertical Text - Absolute Positioned */}
                     <div className="absolute right-2 md:-right-28 lg:-right-32 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden md:block">

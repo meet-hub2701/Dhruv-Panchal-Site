@@ -19,7 +19,7 @@ export const Portfolio = ({ isDarkMode }) => {
     // Filter projects based on active category
     const filteredProjects = activeCategory === 'ALL'
         ? projects
-        : projects.filter(project => project.category === activeCategory);
+        : []; // Projects only visible in 'ALL' for now
 
     return (
         <section
@@ -44,10 +44,12 @@ export const Portfolio = ({ isDarkMode }) => {
                 {categories.map((cat) => (
                     <button
                         key={cat}
-                        onClick={() => setActiveCategory(cat)}
+                        onClick={() => cat === 'ALL' && setActiveCategory(cat)}
                         className={`text-sm lg:text-base font-sans font-medium tracking-wide transition-colors ${activeCategory === cat
-                            ? 'text-primary'
-                            : isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'
+                            ? 'text-primary cursor-default'
+                            : cat === 'ALL'
+                                ? isDarkMode ? 'text-gray-400 hover:text-white cursor-pointer' : 'text-gray-600 hover:text-black cursor-pointer'
+                                : isDarkMode ? 'text-gray-600 cursor-default' : 'text-gray-400 cursor-default'
                             }`}
                     >
                         {cat}
