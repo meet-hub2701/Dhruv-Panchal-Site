@@ -63,7 +63,7 @@ export const About = ({ isDarkMode }) => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Node.js</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Headless CMS</span>
                             </div>
 
                             {/* Column 2 */}
@@ -73,7 +73,7 @@ export const About = ({ isDarkMode }) => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>MongoDB</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Node.js</span>
                             </div>
 
                             {/* Column 3 (Wrapping) */}
@@ -83,7 +83,7 @@ export const About = ({ isDarkMode }) => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FFB800]"></div>
-                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>Headless CMS</span>
+                                <span className={`text-base font-normal ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>MongoDB</span>
                             </div>
                         </div>
                     </div>

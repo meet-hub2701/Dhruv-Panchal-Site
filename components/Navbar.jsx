@@ -78,7 +78,10 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
         <>
             {/* Logo - Fixed Top Left */}
             <div className="hidden xl:block fixed top-8 left-12 z-50">
-                <div className={`font-marker text-2xl tracking-wider transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-primary'}`}>
+                <div
+                    className="font-marker text-2xl tracking-wider transition-colors duration-300"
+                    style={{ color: '#FFC107' }}
+                >
                     BONJOUR
                 </div>
             </div>
@@ -144,7 +147,10 @@ export const Navbar = ({ isDarkMode, toggleTheme }) => {
 
             {/* Mobile Navbar (Standard Fixed Top) */}
             <nav className={`xl:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 transition-colors duration-300 ${isDarkMode ? 'bg-dark/90 backdrop-blur-md border-b border-white/5' : 'bg-white/90 backdrop-blur-md border-b border-black/5'}`}>
-                <div className="text-primary font-marker text-xl tracking-wider">
+                <div
+                    className="font-marker text-xl tracking-wider transition-colors duration-300"
+                    style={{ color: '#FFC107' }}
+                >
                     BONJOUR
                 </div>
                 <div className="flex items-center gap-4">
