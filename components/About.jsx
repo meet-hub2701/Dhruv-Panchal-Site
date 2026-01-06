@@ -43,9 +43,9 @@ export const About = ({ isDarkMode }) => {
 
                         {/* Description */}
                         <p className={`text-base font-normal leading-relaxed max-w-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-black'}`} style={{ fontFamily: 'Poppins' }}>
-                            Hi there! I’m a passionate Fullstack Developer with expertise in Jamstack, Next.js, React, Node.js, and Headless CMS. I love combining technical skill with creative design to build applications that are powerful, responsive, and visually striking.
+                            Hey! Thanks for stopping by. I’m a Fullstack Developer who loves working with Jamstack, Next.js, React, Node.js, Tailwind, Headless CMS, and more. I’m always curious about the latest tech and enjoy sharing what I learn.
                             <br /><br />
-                            Whether it's a complex web app or a sleek digital experience, I’m dedicated to helping clients bring their visions to life. I focus on the details that matter, ensuring every project is delivered with quality, precision, and a modern aesthetic that resonates with users.
+                            I specialize in building end-to-end web solutions—from robust <strong>backend architectures</strong> to dynamic <strong>frontend interfaces</strong>. My goal is to deliver scalable, high-performance applications that not only solve real-world problems but also provide a seamless experience for your users.
                         </p>
 
                         {/* SKILLS Header */}
